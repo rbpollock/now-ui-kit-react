@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { DynamicConnectButton, DynamicWidget } from '@dynamic-labs/sdk-react-core'
+import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
+
 // reactstrap components
 import {
   Button,
@@ -54,14 +58,14 @@ function IndexNavbar() {
         <Container>
           <div className="navbar-translate">
             <NavbarBrand
-              href="https://demos.creative-tim.com/now-ui-kit-react/#/index?ref=nukr-index-navbar"
+              href="/index"
               target="_blank"
               id="navbar-brand"
             >
-              Now UI Kit React
+              PageDAO
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-              Designed by Invision. Coded by Creative Tim
+              Literature. Decentralized. Since 2021.
             </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
@@ -93,8 +97,8 @@ function IndexNavbar() {
                       .scrollIntoView();
                   }}
                 >
-                  <i className="now-ui-icons arrows-1_cloud-download-93"></i>
-                  <p>Download</p>
+                  <i className="now-ui-icons objects_spaceship"></i>
+                  <p>Stats</p>
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav>
@@ -106,36 +110,24 @@ function IndexNavbar() {
                   onClick={(e) => e.preventDefault()}
                 >
                   <i className="now-ui-icons design_app mr-1"></i>
-                  <p>Components</p>
+                  <p>Tools</p>
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem to="/index" tag={Link}>
                     <i className="now-ui-icons business_chart-pie-36 mr-1"></i>
-                    All components
+                    Tools
                   </DropdownItem>
                   <DropdownItem
-                    href="https://demos.creative-tim.com/now-ui-kit-react/#/documentation/introduction?ref=nukr-index-navbar"
-                    target="_blank"
+                    href="/index"
+                    tag={Link}
                   >
                     <i className="now-ui-icons design_bullet-list-67 mr-1"></i>
-                    Documentation
+                    FAQ
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Button
-                  className="nav-link btn-neutral"
-                  color="info"
-                  href="https://www.creative-tim.com/product/now-ui-kit-pro-react?ref=nukr-index-navbar"
-                  id="upgrade-to-pro"
-                  target="_blank"
-                >
-                  <i className="now-ui-icons arrows-1_share-66 mr-1"></i>
-                  <p>Upgrade to PRO</p>
-                </Button>
-                <UncontrolledTooltip target="#upgrade-to-pro">
-                  Cooming soon!
-                </UncontrolledTooltip>
+                <DynamicWidget innerButtonComponent={<button>Log In/Register</button>}/>
               </NavItem>
               <NavItem>
                 <NavLink
@@ -152,28 +144,28 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                  href="https://medium.com/pagedao-magazine"
                   target="_blank"
-                  id="facebook-tooltip"
+                  id="medium-tooltip"
                 >
-                  <i className="fab fa-facebook-square"></i>
-                  <p className="d-lg-none d-xl-none">Facebook</p>
+                  <i className="fab fa-medium"></i>
+                  <p className="d-lg-none d-xl-none">Medium</p>
                 </NavLink>
-                <UncontrolledTooltip target="#facebook-tooltip">
-                  Like us on Facebook
+                <UncontrolledTooltip target="#medium-tooltip">
+                  Follow us on Medium
                 </UncontrolledTooltip>
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                  href="https://bit.ly/pagedao-discord"
                   target="_blank"
-                  id="instagram-tooltip"
+                  id="discord-tooltip"
                 >
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-discord"></i>
                   <p className="d-lg-none d-xl-none">Instagram</p>
                 </NavLink>
-                <UncontrolledTooltip target="#instagram-tooltip">
-                  Follow us on Instagram
+                <UncontrolledTooltip target="#discord-tooltip">
+                  Join our Discord
                 </UncontrolledTooltip>
               </NavItem>
             </Nav>

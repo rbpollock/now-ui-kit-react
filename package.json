@@ -3,6 +3,16 @@
   "version": "1.5.2",
   "private": true,
   "dependencies": {
+    "@dynamic-labs/cosmos": "^1.0.9",
+    "@dynamic-labs/ethereum": "^1.0.9",
+    "@dynamic-labs/magic": "^1.0.9",
+    "@dynamic-labs/sdk-react-core": "^1.0.9",
+    "@dynamic-labs/solana": "^1.0.9",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.7",
+    "@mui/joy": "^5.0.0-beta.25",
+    "@mui/material": "^5.15.7",
     "moment": "2.29.4",
     "nouislider": "15.4.0",
     "react": ">=16.8.0",
@@ -12,7 +22,9 @@
     "react-router-dom": "6.11.1",
     "react-scripts": "5.0.1",
     "reactstrap": "8.10.0",
-    "sass": "1.62.1"
+    "sass": "1.62.1",
+    "swr": "^2.2.4",
+    "viem": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

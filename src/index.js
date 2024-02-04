@@ -30,14 +30,35 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import Team from "views/dashboard/team/team.js";
+
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
+
+import { CosmosWalletConnectors } from "@dynamic-labs/cosmos";
+import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { MagicWalletConnectors } from "@dynamic-labs/magic";
+import { SolanaWalletConnectors } from "@dynamic-labs/solana";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
+  <DynamicContextProvider
+  settings={{
+    // Find your environment id at https://app.dynamic.xyz/dashboard/developer
+    environmentId: "74bd1bf3-bdd5-43ba-8ea3-e744ebfaaaf2",
+    walletConnectors: [
+      CosmosWalletConnectors,
+      EthereumWalletConnectors,
+      MagicWalletConnectors,
+      SolanaWalletConnectors
+    ],
+  }}
+>
   <BrowserRouter>
     <Routes>
       <Route path="/index" element={<Index />} />
       <Route path="/nucleo-icons" element={<NucleoIcons />} />
+      <Route path="/dashboard" element={<Team/>} />
       <Route path="/landing-page" element={<LandingPage />} />
       <Route path="/profile-page" element={<ProfilePage />} />
       <Route path="/login-page" element={<LoginPage />} />
@@ -45,4 +66,5 @@ root.render(
       <Route path="*" element={<Navigate to="/index" replace />} />
     </Routes>
   </BrowserRouter>
+  </DynamicContextProvider>
 );

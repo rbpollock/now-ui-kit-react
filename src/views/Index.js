@@ -24,8 +24,13 @@ import CompleteExamples from "./index-sections/CompleteExamples.js";
 import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
+import useSWR from 'swr'
+ 
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function Index() {
+  const { data, error, isLoading } = useSWR(process.env.STRAPI_URL+"/api/page/1", fetcher);
+
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -39,11 +44,14 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
+      <IndexNavbar data={data} />
       <div className="wrapper">
         <IndexHeader />
         <div className="main">
           <Images />
+          <Carousel />
+          <NucleoIcons />
+          <SignUp />
           <BasicElements />
           <Navbars />
           <Tabs />
@@ -51,10 +59,7 @@ function Index() {
           <Notifications />
           <Typography />
           <Javascript />
-          <Carousel />
-          <NucleoIcons />
           <CompleteExamples />
-          <SignUp />
           <Examples />
           <Download />
         </div>
