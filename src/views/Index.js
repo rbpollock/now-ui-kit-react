@@ -26,17 +26,20 @@ import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
 import useSWR from 'swr'
  
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url, token) => fetch(url, {
+  headers: { Authorization: `Bearer ${token}` }
+}).then((res) => res.json());
 
 function Index() {
-  const { data, error, isLoading } = useSWR(process.env.STRAPI_URL+"/api/page/1", fetcher);
+  const { data, error, isLoading } = useSWR([process.env.STRAPI_URL+"/api/page/1",process.env.STRAPI_API_KEY], fetcher);
 
-  React.useEffect(() => {
+  React.useEffect((data) => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
     document.documentElement.classList.remove("nav-open");
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
+    console.log(data);
     return function cleanup() {
       document.body.classList.remove("index-page");
       document.body.classList.remove("sidebar-collapse");
@@ -49,7 +52,7 @@ function Index() {
         <IndexHeader />
         <div className="main">
           <Images />
-          <Carousel />
+          <Carousel data={{isLoading, error}}/>
           <NucleoIcons />
           <SignUp />
           <BasicElements />

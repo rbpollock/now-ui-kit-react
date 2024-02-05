@@ -16,6 +16,7 @@
     "moment": "2.29.4",
     "nouislider": "15.4.0",
     "react": ">=16.8.0",
+    "react-app-rewired": "^2.2.1",
     "react-bootstrap-switch": "15.5.3",
     "react-datetime": "3.2.0",
     "react-dom": ">=16.8.0",

@@ -20,6 +20,9 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 function ProfilePage() {
+
+  // do a rarible api fetch for getitemsbycreator
+  
   const [pills, setPills] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("profile-page");

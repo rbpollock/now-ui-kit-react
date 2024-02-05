@@ -41,6 +41,7 @@ import { SolanaWalletConnectors } from "@dynamic-labs/solana";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+
 root.render(
   <DynamicContextProvider
   settings={{
