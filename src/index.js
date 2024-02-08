@@ -41,6 +41,56 @@ import { SolanaWalletConnectors } from "@dynamic-labs/solana";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const evmNetworks = [
+  {
+    blockExplorerUrls: ['https://etherscan.io/'],
+    chainId: 1,
+    chainName: 'Ethereum Mainnet',
+    iconUrls: ['https://app.dynamic.xyz/assets/networks/eth.svg'],
+    name: 'Ethereum',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'Ether',
+      symbol: 'ETH',
+    },
+    networkId: 1,
+    
+    rpcUrls: ['https://mainnet.infura.io/v3/'],
+    vanityName: 'ETH Mainnet',
+  },
+  {
+    blockExplorerUrls: ['https://polygonscan.com/'],
+    chainId: 137,
+    chainName: 'Matic Mainnet',
+    iconUrls: ["https://app.dynamic.xyz/assets/networks/polygon.svg"],
+    name: 'Polygon',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'MATIC',
+      symbol: 'MATIC',
+    },
+    networkId: 137,
+    rpcUrls: ['https://polygon-rpc.com'],    
+    vanityName: 'Polygon',
+  },
+  {
+    blockExplorerUrls: ['https://mintscan.io/osmosis/'],
+    chainId: 403,
+    lcdUrl: "https://lcd.osmosis.zone",
+    chainName: 'osmosis-1',
+    iconUrls: ["https://app.dynamic.xyz/assets/networks/osmosis.svg"],
+    name: 'Osmosis',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'OSMO',
+      symbol: 'OSMO',
+      denom: 'uosmo'
+    },
+    networkId: 403,
+    rpcUrls: ['https://rpc.osmosis.zone'],    
+    vanityName: 'Osmosis',
+  }
+];
 
 root.render(
   <DynamicContextProvider
@@ -53,6 +103,7 @@ root.render(
       MagicWalletConnectors,
       SolanaWalletConnectors
     ],
+    evmNetworks
   }}
 >
   <BrowserRouter>

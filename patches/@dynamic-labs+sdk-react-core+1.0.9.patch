@@ -1,0 +1,29 @@
+diff --git a/node_modules/@dynamic-labs/sdk-react-core/src/lib/utils/hooks/useProcessNetworkConfigurations/useProcessNetworkConfigurations.js b/node_modules/@dynamic-labs/sdk-react-core/src/lib/utils/hooks/useProcessNetworkConfigurations/useProcessNetworkConfigurations.js
+index b2fef8d..e5f438b 100644
+--- a/node_modules/@dynamic-labs/sdk-react-core/src/lib/utils/hooks/useProcessNetworkConfigurations/useProcessNetworkConfigurations.js
++++ b/node_modules/@dynamic-labs/sdk-react-core/src/lib/utils/hooks/useProcessNetworkConfigurations/useProcessNetworkConfigurations.js
+@@ -23,6 +23,8 @@ const useProcessNetworkConfigurations = ({ authToken, environmentId, evmNetworks
+      * This is the version of the local storage object. If the version changes, the local storage object will be removed.
+      * This is used in case we need to change the structure of the local storage object.
+      */
++
++    console.log("inside useProcessNetworkConfigurations the best");
+     const VERSION = 2;
+     const [lsNetworks, setLsNetworks, removeLsNetworks] = useLocalStorage(NETWORKS_STORAGE_KEY, undefined, validateLocalStorageExpiry);
+     const [loading, setLoading] = useState(false);
+@@ -109,12 +111,15 @@ const useProcessNetworkConfigurations = ({ authToken, environmentId, evmNetworks
+             if (!customerEvmNetworks && (serverNetworks === null || serverNetworks === void 0 ? void 0 : serverNetworks.length)) {
+                 mergedEvmNetworks = serverNetworks;
+             }
++
+             if (serverNetworks !== undefined &&
+                 serverNetworks.length &&
+                 customerEvmNetworks !== undefined &&
+                 customerEvmNetworks.length) {
+                 mergedEvmNetworks = mergeCustomerEvmNetworksWithServerNetworks(customerEvmNetworks, serverNetworks);
+             }
++            console.log("cosmos networks:",cosmosNetworks);
++
+             setLsNetworks({
+                 configurations: {
+                     cosmos: cosmosNetworks,
