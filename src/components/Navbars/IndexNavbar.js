@@ -1,8 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
-
-import { DynamicConnectButton, DynamicWidget } from '@dynamic-labs/sdk-react-core'
-import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 // reactstrap components
 import {
@@ -21,9 +18,39 @@ import {
   UncontrolledTooltip,
 } from "reactstrap";
 
+import { useMagic } from "../../context/MagicProvider"
+import { useUser, UserProvider } from "../../context/UserContext"
+
 function IndexNavbar() {
+  const [account, setAccount] = useState(null);
+  const [idToken, setIdToken] = useState();
+
+  const connectWallet = async () => {
+    const accounts = await magic.wallet
+      .connectWithUI()
+      .on("id-token-created", (params) => {
+        setIdToken(params.idToken);
+      });
+
+    setAccount(accounts[0]);
+  };
+
+  const showUI = () => {
+    magic.wallet.showUI();
+  };
+
+  const logout = async () => {
+    await magic.user.logout();
+    setAccount(null);
+  };
+
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+
+  // Get the initializeWeb3 function from the Web3 context
+  const { magic } = useMagic()
+  const { fetchUser } = useUser()
+
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -127,7 +154,16 @@ function IndexNavbar() {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <DynamicWidget innerButtonComponent={<button>Log In/Register</button>}/>
+                  {!account && (
+                    <Button
+                    onClick={connectWallet}
+                  >Log In</Button>
+                  )}
+                  {account && (
+                      <Button
+                      onClick={logout}
+                    >Log Out</Button>
+                    )}
               </NavItem>
               <NavItem>
                 <NavLink

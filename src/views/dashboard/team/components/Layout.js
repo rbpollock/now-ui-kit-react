@@ -145,7 +145,7 @@ function SideDrawer(
   );
 }
 
-export default {
+const exports = {
   Root,
   Header,
   SideNav,
@@ -153,3 +153,5 @@ export default {
   SideDrawer,
   Main,
 };
+
+export default exports;
